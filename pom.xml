@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>post</artifactId>
+	<artifactId>old_post</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
 	<!-- 변수 -->
 	<properties>
-		<org.springframework-version>4.3.24.RELEASE</org.springframework-version>
+		<org.springframework-version>4.2.1.RELEASE</org.springframework-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -72,26 +72,58 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
 		</dependency>
 		<dependency>
 		    <groupId>junit</groupId>
 		    <artifactId>junit</artifactId>
-		    <version>4.13-beta-3</version>
+		    <version>4.12</version>
 		</dependency>
 
 	</dependencies>
+	<!-- Jenkins에서 사용하는 부분 -->
+	<profiles>
+		<profile>
+			<id>production</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${project.basedir}/src/main/resources</directory>
+						<excludes>
+							<exclude>**/*.java</exclude>
+						</excludes>
+					</resource>
+				</resources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<configuration>
+							<encoding>UTF-8</encoding>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 
+			<dependencies>
+				<dependency>
+					<groupId>javax.servlet</groupId>
+					<artifactId>javax.servlet-api</artifactId>
+					<version>3.0.1</version>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>javax.servlet.jsp</groupId>
+					<artifactId>jsp-api</artifactId>
+					<version>2.0</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-				<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
@@ -116,7 +148,7 @@
 					<username>admin</username>
 					<password>manager</password>
 				</configuration>
-			</plugin>			
+			</plugin>
 		</plugins>
 	</build>
 </project>
