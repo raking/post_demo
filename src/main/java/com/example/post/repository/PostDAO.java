@@ -1,16 +1,14 @@
 package com.example.post.repository;
 
 
-import java.util.List;
-
-import javax.sql.DataSource;
-
+import com.example.post.exception.PostException;
+import com.example.post.vo.PostVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.post.exception.PostException;
-import com.example.post.vo.PostVO;
+import javax.sql.DataSource;
+import java.util.List;
 
 @Repository
 public class PostDAO {

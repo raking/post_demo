@@ -1,12 +1,11 @@
 package com.example.post.service;
 
-import java.util.List;
-
 import com.example.post.repository.PostDAO;
+import com.example.post.vo.PostVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.post.vo.PostVO;
+import java.util.List;
 
 @Service
 public class PostService {
