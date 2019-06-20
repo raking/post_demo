@@ -33,7 +33,7 @@ public class PostDAOTest {
 	public void test() {
 		PostDAO post = new PostDAO();
 		java.util.List<PostVO> posts=post.getList();
-		Assert.isTrue(posts.size()<0, "조회값이 없다.");
+		Assert.isTrue(posts.size()<0, "no data");
 		//Test First Development
 		//Test Driven Development
 
