@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
@@ -30,6 +31,7 @@ public class PostDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void test() {
 		PostDAO post = new PostDAO();
 		java.util.List<PostVO> posts=post.getList();
