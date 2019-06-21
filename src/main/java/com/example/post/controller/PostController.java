@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/old_post")
 public class PostController {
 	@Autowired
 	private PostService postService;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String list(Model model) {
-		List<PostVO> list = postService.getList();
-		model.addAttribute("list", list);
+		//List<PostVO> list = postService.getList();
+		//model.addAttribute("list", list);
 		return "index";
 	}
 	
